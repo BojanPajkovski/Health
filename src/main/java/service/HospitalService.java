@@ -23,17 +23,13 @@ public class HospitalService {
         for(Hospital h :hospitals){
 
             if(h.getType().equals("privatna")){
-
                 privateHospitals.add(h);
-
             }
 
         }
         for(Hospital h :privateHospitals){
-                System.out.println("Bolnicata " + h.getName() + " e privatna");
-
+            System.out.println("Bolnicata " + h.getName() + " e privatna");
         }
-
         return privateHospitals;
     }
 }

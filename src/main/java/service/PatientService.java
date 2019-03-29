@@ -40,7 +40,7 @@ public class PatientService {
         int maxAge = 0;
         String patientName = "";
         String dg = "";
-
+        Patient patient = new Patient();
         for (PatientsPerDoctorDTO p : patientsByDoctors) {
 
             if (p.getAge() > maxAge) {
@@ -54,12 +54,14 @@ public class PatientService {
             if( p.getAge() == maxAge){
 
                 System.out.println(p.getPatientName() + " " + p.getDg());
+                patient.setName(p.getDoctorName());
+                patient.setAge(p.getAge());
             }
 
         }
 
 
-        return null;
+        return patient;
     }
 
     public List<Patient> getPatientsOver30() {
@@ -69,22 +71,16 @@ public class PatientService {
         HashMap<Integer, Patient> patientHashMap = new HashMap<Integer, Patient>();
 
         for (Patient p : patients) {
-
             patientHashMap.put(p.getId(), p);
-
         }
 
         for (Integer key : patientHashMap.keySet()) {
-
-        if(patientHashMap.get(key).getAge() >=30 ){
-
-            System.out.println("pacientot " +patientHashMap.get(key).getName() + " ima godini " +patientHashMap.get(key).getAge() );
+            if(patientHashMap.get(key).getAge() >=30 ){
+                System.out.println("pacientot " +patientHashMap.get(key).getName() + " ima godini " +patientHashMap.get(key).getAge() );
+            }
         }
 
-
-        }
-
-        return null;
+        return patients;
     }
 
     public Patient getPatientCharacters (int id ){
@@ -95,10 +91,9 @@ public class PatientService {
 
             System.out.println("Imeto na pacientot e " + patient.getName() + " a brojot na karakteri vo negovoto ime e "
                     + patient.getName().length());
-
         }
 
-        return null;
+        return patient;
     }
 }
 
