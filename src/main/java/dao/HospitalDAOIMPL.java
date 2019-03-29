@@ -29,14 +29,10 @@ public class HospitalDAOIMPL {
 
             stmt.execute(sqlQuery);
 
-
         } catch (Exception e) {
 
-
             e.printStackTrace();
-        }
-
-        finally {
+        } finally {
 
             try { stmt.close(); } catch (Exception e) {  e.printStackTrace(); }
             try { conn.close(); } catch (Exception e) {  e.printStackTrace();}
@@ -52,7 +48,6 @@ public class HospitalDAOIMPL {
 
         try {
 
-
             String sqlQuery = "update hospital set name =?, location = ?, type =?, cityId = ? where id = ?";
 
             stmt = conn.prepareStatement(sqlQuery);
@@ -67,13 +62,8 @@ public class HospitalDAOIMPL {
 
 
         } catch (Exception e) {
-
             e.printStackTrace();
-
-        }
-
-        finally {
-
+        } finally {
 
             try { stmt.close(); } catch (Exception e) {  e.printStackTrace(); }
             try { conn.close(); } catch (Exception e) {  e.printStackTrace();}
@@ -101,12 +91,7 @@ public class HospitalDAOIMPL {
 
         } catch (Exception e) {
 
-
-        }
-
-        finally {
-
-
+        } finally {
             try { stmt.close(); } catch (Exception e) {  e.printStackTrace(); }
             try { conn.close(); } catch (Exception e) {  e.printStackTrace();}
         }
@@ -143,17 +128,12 @@ public class HospitalDAOIMPL {
 
                 hospitals.add(hospital);
 
-
             }
-
 
         } catch (Exception e) {
 
 
-        }
-
-        finally {
-
+        } finally {
             try { rst.close(); } catch (Exception e)  {   e.printStackTrace(); }
             try { stmt.close(); } catch (Exception e) {  e.printStackTrace(); }
             try { conn.close(); } catch (Exception e) {  e.printStackTrace();}
@@ -181,19 +161,13 @@ public class HospitalDAOIMPL {
             rst = stmt.executeQuery(sqlQuery);
 
             while (rst.next()) {
-
                 String hospitalName = rst.getString("name");
-
                 hospital = new Hospital(hospitalName);
-
-
             }
 
         } catch (Exception e) {
             e.printStackTrace();
-        }
-
-        finally {
+        } finally {
 
             try { rst.close(); } catch (Exception e)  {   e.printStackTrace(); }
             try { stmt.close(); } catch (Exception e) {  e.printStackTrace(); }
@@ -235,9 +209,7 @@ public class HospitalDAOIMPL {
 
         } catch (Exception e) {
             e.printStackTrace();
-        }
-
-        finally {
+        } finally {
 
             try { rst.close(); } catch (Exception e)  {   e.printStackTrace(); }
             try { stmt.close(); } catch (Exception e) {  e.printStackTrace(); }
@@ -255,9 +227,7 @@ public class HospitalDAOIMPL {
 
         List<Hospital> hospitals = null;
 
-
         try {
-
 
             stmt = conn.createStatement();
 
@@ -272,7 +242,6 @@ public class HospitalDAOIMPL {
             rst = stmt.executeQuery(sqlQuery);
 
             hospitals = new ArrayList<Hospital>();
-
 
             while (rst.next()) {
 
@@ -289,9 +258,7 @@ public class HospitalDAOIMPL {
             }
         } catch (Exception ex) {
             ex.printStackTrace();
-        }
-
-        finally {
+        } finally {
 
             try { rst.close(); } catch (Exception e)  {   e.printStackTrace(); }
             try { stmt.close(); } catch (Exception e) {  e.printStackTrace(); }
@@ -337,9 +304,7 @@ public class HospitalDAOIMPL {
 
         } catch (Exception e) {
             e.printStackTrace();
-        }
-
-        finally {
+        } finally {
 
             try { rst.close(); } catch (Exception e)  {   e.printStackTrace(); }
             try { stmt.close(); } catch (Exception e) {  e.printStackTrace(); }

@@ -13,33 +13,23 @@ public class ConnectionWithPattern {
     private static PreparedStatement stmt = null;
     private static ResultSet rst = null;
 
-    String dbUrl ="jdbc:mysql://localhost:3006/health?useSSL=false&serverTimezone=UTC";
-    String user = "root";
-    String pass ="root";
+    private static final String dbUrl ="jdbc:mysql://localhost:3006/health?useSSL=false&serverTimezone=UTC";
+    private static final String user = "root";
+    private static final String pass ="root";
 
     private ConnectionWithPattern() throws SQLException, ClassNotFoundException {
-
-
-
         conn = DriverManager.getConnection(dbUrl,user,pass);
-
     }
+
     static{
-
-    try{
-
-        instance = new ConnectionWithPattern();
-
-
+        try{
+            instance = new ConnectionWithPattern();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
-    catch(Exception e){
-
-        e.printStackTrace();
-    }
-}
     public static Connection getConnectionWithPattern(){
-
         return conn;
     }
 

@@ -241,7 +241,6 @@ public class DoctorDAOIMPL {
 
                 patientsPerDoctors.add(patientsPerDoctor);
 
-
             }
 
 
@@ -265,7 +264,6 @@ public class DoctorDAOIMPL {
         ResultSet rst = null;
 
         List<Doctor> doctors = null;
-
 
         try {
 

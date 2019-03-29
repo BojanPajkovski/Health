@@ -24,6 +24,9 @@ public class Patient {
         this.age = patientAge;
     }
 
+    public Patient() {
+    }
+
     public int getId() {return id;
     }
 

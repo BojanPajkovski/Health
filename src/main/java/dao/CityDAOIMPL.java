@@ -18,9 +18,7 @@ public class CityDAOIMPL {
         Statement stmt = null;
         ResultSet rst = null;
 
-
         try {
-
 
             stmt = conn.createStatement();
             String sqlQuery = "DELETE from city  where city.id = ";
@@ -47,12 +45,9 @@ public class CityDAOIMPL {
         PreparedStatement stmt = null;
         ResultSet rst = null;
 
-
         try {
 
-
             String sqlQuery = "INSERT INTO city (name , population) VALUES(?,?);";
-
 
             stmt = conn.prepareStatement(sqlQuery);
             stmt.setString(1, city.getName());
@@ -91,7 +86,6 @@ public class CityDAOIMPL {
             stmt.executeUpdate();
 
         } catch (SQLException e) {
-
             e.printStackTrace();
         }
 
@@ -109,21 +103,12 @@ public class CityDAOIMPL {
         Connection conn = ConnectionWithPattern.getConnectionWithPattern();
         Statement stmt = null;
         ResultSet rst = null;
-
-        List<City> cities = null;
-
-
+        List<City> cities = new ArrayList<City>();
         try {
-
-
             stmt = conn.createStatement();
-
             String sqlQuery = "SELECt * from city";
-
             rst = stmt.executeQuery(sqlQuery);
-
             cities = new ArrayList<City>();
-
 
             while (rst.next()) {
 
@@ -137,17 +122,13 @@ public class CityDAOIMPL {
             }
         } catch (Exception ex) {
             ex.printStackTrace();
-        }
-
-        finally {
+        } finally {
 
             try { rst.close(); } catch (Exception e)  {   e.printStackTrace(); }
             try { stmt.close(); } catch (Exception e) {  e.printStackTrace(); }
             try { conn.close(); } catch (Exception e) {  e.printStackTrace();}
         }
-
         return cities;
-
     }
 
     public City getById (int id){
@@ -155,7 +136,7 @@ public class CityDAOIMPL {
         Connection conn = ConnectionWithPattern.getConnectionWithPattern();
         Statement stmt = null;
         ResultSet rst = null;
-        City city = null;
+        City city = new City();
         try {
 
             stmt = conn.createStatement();
@@ -178,9 +159,7 @@ public class CityDAOIMPL {
         }catch(Exception e){
 
             e.printStackTrace();
-        }
-
-        finally {
+        }finally {
 
             try { rst.close(); } catch (Exception e)  {   e.printStackTrace(); }
             try { stmt.close(); } catch (Exception e) {  e.printStackTrace(); }
@@ -196,21 +175,13 @@ public class CityDAOIMPL {
         Connection conn = ConnectionWithPattern.getConnectionWithPattern();
         Statement stmt = null;
         ResultSet rst = null;
-
-        List<City> cities = null;
-
+        List<City> cities = new ArrayList<City>();
 
         try {
 
-
             stmt = conn.createStatement();
-
             String sqlQuery = "SELECT * FROM health.city as c where c.name like '";
-
             sqlQuery += text + "%' ";
-
-
-
             rst = stmt.executeQuery(sqlQuery);
 
             cities = new ArrayList<City>();
@@ -224,16 +195,10 @@ public class CityDAOIMPL {
                 City city = new City(cityId, cityName, cityPopulation);
                 cities.add(city);
 
-
-
-
-
             }
         } catch (Exception ex) {
             ex.printStackTrace();
-        }
-
-        finally {
+        } finally {
 
             try { rst.close(); } catch (Exception e)  {   e.printStackTrace(); }
             try { stmt.close(); } catch (Exception e) {  e.printStackTrace(); }
@@ -241,7 +206,5 @@ public class CityDAOIMPL {
         }
 
         return cities;
-
-
     }
 }

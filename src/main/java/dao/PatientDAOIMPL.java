@@ -18,9 +18,7 @@ public class PatientDAOIMPL {
         Statement stmt = null;
         ResultSet rst = null;
 
-
         try {
-
 
             stmt = conn.createStatement();
             String sqlQuery = "DELETE from patient  where patient.id = ";
@@ -29,9 +27,7 @@ public class PatientDAOIMPL {
 
         } catch (Exception ex) {
             ex.printStackTrace();
-        }
-
-        finally {
+        } finally {
 
             try { rst.close(); } catch (Exception e)  {   e.printStackTrace(); }
             try { stmt.close(); } catch (Exception e) {  e.printStackTrace(); }
@@ -50,10 +46,7 @@ public class PatientDAOIMPL {
 
         try {
 
-
             String sqlQuery = "INSERT INTO patient (name ,surname, age) VALUES(?,?,?);";
-
-
             stmt = conn.prepareStatement(sqlQuery);
 
             stmt.setString(1, patient.getName());
@@ -65,9 +58,7 @@ public class PatientDAOIMPL {
 
         } catch (Exception ex) {
             ex.printStackTrace();
-        }
-
-        finally {
+        } finally {
 
             try { rst.close(); } catch (Exception e)  {   e.printStackTrace(); }
             try { stmt.close(); } catch (Exception e) {  e.printStackTrace(); }
@@ -97,9 +88,7 @@ public class PatientDAOIMPL {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }
-
-        finally {
+        } finally {
 
             try { rst.close(); } catch (Exception e)  {   e.printStackTrace(); }
             try { stmt.close(); } catch (Exception e) {  e.printStackTrace(); }
@@ -128,18 +117,14 @@ public class PatientDAOIMPL {
 
             patients = new ArrayList<Patient>();
 
-
             while (rst.next()) {
 
                 int patientId = rst.getInt("id");
                 String patientName = rst.getString("name");
                 String patientSurname = rst.getString("surname");
                 int patientAge = rst.getInt("age");
-
-
                 Patient patient = new Patient(patientId, patientName, patientSurname,patientAge);
                 patients.add(patient);
-
 
             }
         } catch (Exception ex) {
@@ -161,6 +146,7 @@ public class PatientDAOIMPL {
         Connection conn = ConnectionWithPattern.getConnectionWithPattern();
         Statement stmt = null;
         ResultSet rst = null;
+        Patient patient = null;
 
         try {
 
@@ -178,23 +164,21 @@ public class PatientDAOIMPL {
                 String patientSurname = rst.getString("surname");
                 int patientAge = rst.getInt("age");
 
-                Patient patient = new Patient(patientId, patientName, patientSurname,patientAge);
+                patient = new Patient(patientId, patientName, patientSurname,patientAge);
                 return patient;
             }
 
         }catch(Exception e){
 
             e.printStackTrace();
-        }
-
-        finally {
+        } finally {
 
             try { rst.close(); } catch (Exception e)  {   e.printStackTrace(); }
             try { stmt.close(); } catch (Exception e) {  e.printStackTrace(); }
             try { conn.close(); } catch (Exception e) {  e.printStackTrace();}
         }
 
-        return null;
+        return patient;
     }
 
     public List <Patient> searchPatientByText( String text){
@@ -207,7 +191,6 @@ public class PatientDAOIMPL {
 
 
         try {
-
 
             stmt = conn.createStatement();
 
@@ -223,15 +206,12 @@ public class PatientDAOIMPL {
 
             patients = new ArrayList<Patient>();
 
-
             while (rst.next()) {
 
                 int patientId = rst.getInt("id");
                 String patientName = rst.getString("name");
                 String patientSurname = rst.getString("surname");
                 int patientAge = rst.getInt("age");
-
-
                 Patient patient = new Patient(patientId, patientName, patientSurname,patientAge);
                 patients.add(patient);
 
@@ -239,9 +219,7 @@ public class PatientDAOIMPL {
             }
         } catch (Exception ex) {
             ex.printStackTrace();
-        }
-
-        finally {
+        } finally {
 
             try { rst.close(); } catch (Exception e)  {   e.printStackTrace(); }
             try { stmt.close(); } catch (Exception e) {  e.printStackTrace(); }
@@ -269,31 +247,20 @@ public class PatientDAOIMPL {
 
             while (rst.next()) {
 
-
                 String patientName = rst.getString("name");
                 String patientSurname = rst.getString("surname");
                 int patientAge = rst.getInt("age");
-
-
                 patient = new Patient( patientName, patientSurname, patientAge);
-
-
-
             }
 
         }catch(Exception e){
-
             e.printStackTrace();
-        }
-
-        finally {
+        } finally {
 
             try { rst.close(); } catch (Exception e)  {   e.printStackTrace(); }
             try { stmt.close(); } catch (Exception e) {  e.printStackTrace(); }
             try { conn.close(); } catch (Exception e) {  e.printStackTrace();}
         }
-
-
         return patient;
     }
 
